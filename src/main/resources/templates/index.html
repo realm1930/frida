@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="nl" xmlns:th="http://www.thymeleaf.org">
+<head><title>Frituur Frida</title>
+    <link rel="icon" href="images/frida.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/frida.css">
+</head>
+<body>
+<h1>Frituur Frida</h1>
+<h2><span th:text="|Vandaag zijn we ${openGesloten}.|"></span></h2>
+<h2>Adresgegevens</h2>
+<dl th:object="${adres}">
+    <dt>Adres</dt>
+    <dd th:text="|*{straat} *{huisNr} *{gemeente.postCode} *{gemeente.naam}|"></dd>
+</dl>
+</body>
+
+</html>

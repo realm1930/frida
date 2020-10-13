@@ -1,7 +1,18 @@
 body {
     background-color: bisque;
-    font-family: "Adobe Arabic";
+    font-family: "sans-serif";
 }
 h1 {
     color: #ff4726;
+}
+dd,dt {
+    margin-left: 0;
+}
+
+dt {
+    margin-top: 0.5em;
+}
+
+dd {
+    font-weight: bold;
 }
