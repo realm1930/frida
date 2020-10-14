@@ -12,6 +12,6 @@ class TaalController {
     @GetMapping
     public ModelAndView nederlands(@RequestHeader("Accept-Language") String language) {
         var modelAndView = new ModelAndView("taal");
-        return new ModelAndView("taal", "nederlands", language.startsWith("nl"));
+        return new ModelAndView("taal", "nederlands", language.contains("nl"));
     }
 }
