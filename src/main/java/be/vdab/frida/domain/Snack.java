@@ -12,4 +12,16 @@ public class Snack {
         this.naam = naam;
         this.prijs = prijs;
     }
+
+    public long getId() {
+        return id;
+    }
+
+    public String getNaam() {
+        return naam;
+    }
+
+    public BigDecimal getPrijs() {
+        return prijs;
+    }
 }

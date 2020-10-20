@@ -1,1 +1,1 @@
-insert into snacks (naam,prijs) values('test',10)
+insert into frida.snacks (naam,prijs) values('test',10)
