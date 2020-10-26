@@ -5,6 +5,7 @@
 </head>
 <body>
 <nav th:replace="fragments::menu"></nav>
+<div th:if="${param.snackNietGevonden}" class="fout">Snack <span th:text="${param.snackNietGevonden}"></span> niet gevonden</div>
 <h1>Frituur Frida</h1>
 <div th:if="${reedsBezocht}">Welkom terug.</div>
 <h2><span th:text="|Vandaag zijn we ${openGesloten}.|"></span></h2>
