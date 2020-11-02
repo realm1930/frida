@@ -7,4 +7,5 @@ import java.util.List;
 public interface GastenBoekRepository {
     long create(GastenBoekEntry entry);
     List<GastenBoekEntry> findAll();
+    void delete(long id);
 }

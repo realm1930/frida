@@ -35,4 +35,5 @@ class JdbcGastenBoekRepositoryTest extends AbstractTransactionalJUnit4SpringCont
                 .extracting(entry -> entry.getDatum())
                 .isSortedAccordingTo(Comparator.reverseOrder());
     }
+
 }

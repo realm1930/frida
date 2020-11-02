@@ -14,13 +14,12 @@ public class JdbcGastenBoekRepository implements GastenBoekRepository {
     private final SimpleJdbcInsert insert;
     private JdbcTemplate template;
 
-    public JdbcGastenBoekRepository(JdbcTemplate template) {
-        this.insert = new SimpleJdbcInsert(template).withTableName("gastenboek")
-                .usingGeneratedKeyColumns("id" +
-                        "");
+    JdbcGastenBoekRepository(JdbcTemplate template) {
         this.template = template;
+        this.insert = new SimpleJdbcInsert(template)
+                .withTableName("gastenboek")
+                .usingGeneratedKeyColumns("id");
     }
-
     @Override
     public long create(GastenBoekEntry entry) {
         var kolomWaarden = Map.of("naam", entry.getNaam(),
@@ -30,14 +29,19 @@ public class JdbcGastenBoekRepository implements GastenBoekRepository {
         return id.longValue();
     }
     private final RowMapper<GastenBoekEntry> entryRowMapper =
-            (result,rowNum)->new GastenBoekEntry(result.getLong("id"),
+            (result, rowNum) -> new GastenBoekEntry(result.getLong("id"),
                     result.getString("naam"),
-                    result.getDate("datum").toLocalDate(),
+                    result.getDate("datum").toLocalDate() ,
                     result.getString("bericht"));
-
     @Override
     public List<GastenBoekEntry> findAll() {
         var sql = "select id,naam,datum,bericht from frida.gastenboek order by datum desc";
         return template.query(sql, entryRowMapper);
     }
+
+    @Override
+    public void delete(long id) {
+        template.update("delete from frida.gastenboek where id=?", id);
+    }
+
 }

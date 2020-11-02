@@ -19,10 +19,11 @@ public class GastenBoekController {
     public GastenBoekController(GastenBoekService gastenBoekService) {
         this.gastenBoekService = gastenBoekService;
     }
+
     @GetMapping
-    public ModelAndView findAll(){
+    public ModelAndView findAll() {
         return new ModelAndView("gastenboek",
-                "gastenboek",gastenBoekService.findAll());
+                "gastenboek", gastenBoekService.findAll());
     }
     @GetMapping("toevoegen/form")
     public ModelAndView toevoegForm() {
@@ -37,5 +38,12 @@ public class GastenBoekController {
         }
         gastenBoekService.create(form);
         return new ModelAndView("redirect:/gastenboek");
+    }
+    @PostMapping("verwijderen")
+    public String delete(long[] id) {
+        if (id != null) {
+            gastenBoekService.delete(id);
+        }
+        return "redirect:/gastenboek";
     }
 }

@@ -11,7 +11,7 @@ public class GastenBoekEntry {
     @NotBlank
     private final String naam;
     @NotNull
-    @DateTimeFormat(style = "s-")
+    @DateTimeFormat (style = "S-")
     private final LocalDate datum;
     @NotBlank
     private final String bericht;
